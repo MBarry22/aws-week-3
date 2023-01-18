@@ -10,28 +10,48 @@
 <body>
 <style>
   body{
-    background-color: rgb(97, 80, 245);
-    justify-content: center;
-    text-align: center;
+    display: flex;
+    background-color: rgb(2, 2, 2);
+   
   }
   img{
     margin-top: 40px;
     height: 300px;
     width: 450px;
+    border: 2px solid white;
+    margin-right: 20px;
+    
+  }
+  p{
+    color: white;
+    justify-content: center;
+    text-align: center;
+  }
+  form{
+    position: fixed;
+    top: 75%;
+    right: 50%;
+    color: white;
   }
 </style>
-  <!-- create a form to upload an image jpeg with a description -->
-  <form action="/saveImage" method="post" enctype="multipart/form-data">
-    <input type="file" name="image" accept="image/*">
-    <input type="text" name="description" placeholder="Description">
-    <button type="submit" name="submit">UPLOAD</button>
-  </form>
-
+  
   <% images.forEach(image => { %>
     <li  style="list-style:none" >
       <img src="<%= image.file_path %>">
+      <p><%= image.description %></p>
     </li>
 <% }) %>
+
+<form action="/saveImage" method="post" enctype="multipart/form-data">
+  <p style="font-size: 20px;">Upload An Image!</p>
+  <input type="file" name="image" accept="image/*">
+  <br>
+  <br>
+  <input type="text" name="description" placeholder="Description">
+  <br>
+  <br>
+  <button type="submit" name="submit">UPLOAD</button>
+</form>
 
 </body>
 </html>
